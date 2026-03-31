@@ -1,13 +1,16 @@
 import { motion } from 'motion/react';
-
-const metrics = [
-  { value: '80%', label: 'Manual Effort Reduced' },
-  { value: '5m', label: 'Deployment Time (down from 30m)' },
-  { value: '<10m', label: 'AWS Setup Time' },
-  { value: '100%', label: 'Infrastructure as Code' },
-];
+import { useLanguage } from '../context/LanguageContext';
 
 export default function Metrics() {
+  const { t } = useLanguage();
+
+  const metrics = [
+    { value: t('metric_1_val'), label: t('metric_1_label') },
+    { value: t('metric_2_val'), label: t('metric_2_label') },
+    { value: t('metric_3_val'), label: t('metric_3_label') },
+    { value: t('metric_4_val'), label: t('metric_4_label') },
+  ];
+
   return (
     <section className="py-12 bg-emerald-900/10 border-y border-emerald-500/10">
       <div className="max-w-5xl mx-auto px-6 w-full">

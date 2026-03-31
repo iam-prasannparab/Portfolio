@@ -1,22 +1,25 @@
 import { motion } from 'motion/react';
 import { Server, Container, GitBranch, TerminalSquare, Cloud, Settings } from 'lucide-react';
-
-const skills = [
-  { name: 'Linux & Bash', icon: TerminalSquare, desc: 'System administration, shell scripting, cron jobs' },
-  { name: 'Docker & Kubernetes', icon: Container, desc: 'Containerization, Pods, Deployments, Services, Kubectl' },
-  { name: 'Jenkins', icon: Settings, desc: 'Freestyle Jobs, Declarative Pipelines, CI/CD automation' },
-  { name: 'AWS', icon: Cloud, desc: 'EC2, S3, IAM, Security Groups, Cloud Deployment' },
-  { name: 'Terraform', icon: Server, desc: 'Infrastructure as Code, Provisioning, State Management' },
-  { name: 'Git & GitHub', icon: GitBranch, desc: 'Version control, Branching, Merging, Webhooks' },
-];
+import { useLanguage } from '../context/LanguageContext';
 
 export default function Skills() {
+  const { t } = useLanguage();
+
+  const skills = [
+    { name: 'Linux & Bash', icon: TerminalSquare, desc: t('skill_1_desc') },
+    { name: 'Docker & Kubernetes', icon: Container, desc: t('skill_2_desc') },
+    { name: 'Jenkins', icon: Settings, desc: t('skill_3_desc') },
+    { name: 'AWS', icon: Cloud, desc: t('skill_4_desc') },
+    { name: 'Terraform', icon: Server, desc: t('skill_5_desc') },
+    { name: 'Git & GitHub', icon: GitBranch, desc: t('skill_6_desc') },
+  ];
+
   return (
     <section id="skills" className="py-20 bg-gray-900/50 border-b border-gray-800">
       <div className="max-w-5xl mx-auto px-6 w-full">
         <div className="mb-12">
-          <h2 className="text-3xl font-bold text-white mb-4">Core Competencies</h2>
-          <p className="text-gray-400 max-w-2xl">Hands-on experience with the modern DevOps toolchain, focusing on automation, reliability, and scalability.</p>
+          <h2 className="text-3xl font-bold text-white mb-4">{t('skills_title')}</h2>
+          <p className="text-gray-400 max-w-2xl">{t('skills_subtitle')}</p>
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">

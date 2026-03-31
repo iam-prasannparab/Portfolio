@@ -1,42 +1,45 @@
 import { motion } from 'motion/react';
 import { Github, ExternalLink, CheckCircle2 } from 'lucide-react';
-
-const projects = [
-  {
-    title: 'End-to-End DevOps Automation',
-    problem: 'Manual application build, testing, and deployment processes were time-consuming and prone to configuration errors.',
-    solution: 'Built an automated CI/CD pipeline using Jenkins, integrated Docker for containerization, and automated AWS provisioning with Terraform.',
-    metrics: [
-      'Reduced manual effort by 80% using Jenkins CI/CD',
-      'Enabled consistent environments via Docker containerization',
-      'Reduced AWS infrastructure setup time from hours to <10 minutes'
-    ],
-    tech: ['Jenkins', 'Docker', 'Terraform', 'AWS', 'Git'],
-    github: 'https://github.com/iam-prasannparab',
-    demo: '#'
-  },
-  {
-    title: 'Face Recognition Attendance System',
-    problem: 'Traditional attendance tracking was manual, slow, and susceptible to proxy attendance.',
-    solution: 'Developed a Python-based automated attendance system using OpenCV, NumPy, and Pandas for real-time face detection and recognition.',
-    metrics: [
-      'Automated tracking using real-time face detection',
-      'Improved attendance accuracy and eliminated proxies',
-      'Successfully collaborated, designed, tested, and deployed in a team'
-    ],
-    tech: ['Python', 'OpenCV', 'NumPy', 'Pandas'],
-    github: 'https://github.com/iam-prasannparab',
-    demo: '#'
-  }
-];
+import { useLanguage } from '../context/LanguageContext';
 
 export default function Projects() {
+  const { t } = useLanguage();
+
+  const projects = [
+    {
+      title: t('project_1_title'),
+      problem: t('project_1_problem'),
+      solution: t('project_1_solution'),
+      metrics: [
+        t('project_1_metric_1'),
+        t('project_1_metric_2'),
+        t('project_1_metric_3')
+      ],
+      tech: ['Jenkins', 'Docker', 'Terraform', 'AWS', 'Git'],
+      github: 'https://github.com/iam-prasannparab',
+      demo: '#'
+    },
+    {
+      title: t('project_2_title'),
+      problem: t('project_2_problem'),
+      solution: t('project_2_solution'),
+      metrics: [
+        t('project_2_metric_1'),
+        t('project_2_metric_2'),
+        t('project_2_metric_3')
+      ],
+      tech: ['Python', 'OpenCV', 'NumPy', 'Pandas'],
+      github: 'https://github.com/iam-prasannparab',
+      demo: '#'
+    }
+  ];
+
   return (
     <section id="projects" className="py-20">
       <div className="max-w-5xl mx-auto px-6 w-full">
         <div className="mb-12">
-          <h2 className="text-3xl font-bold text-white mb-4">Featured Projects</h2>
-          <p className="text-gray-400 max-w-2xl">Real-world implementations demonstrating practical problem-solving and automation skills.</p>
+          <h2 className="text-3xl font-bold text-white mb-4">{t('projects_title')}</h2>
+          <p className="text-gray-400 max-w-2xl">{t('projects_subtitle')}</p>
         </div>
 
         <div className="space-y-12">
@@ -54,18 +57,18 @@ export default function Projects() {
                   <div>
                     <h3 className="text-2xl font-bold text-white mb-2">{project.title}</h3>
                     <div className="flex flex-wrap gap-2 mb-4">
-                      {project.tech.map(t => (
-                        <span key={t} className="px-2.5 py-1 bg-gray-800 text-emerald-400 text-xs font-medium rounded-md border border-gray-700">
-                          {t}
+                      {project.tech.map(tech => (
+                        <span key={tech} className="px-2.5 py-1 bg-gray-800 text-emerald-400 text-xs font-medium rounded-md border border-gray-700">
+                          {tech}
                         </span>
                       ))}
                     </div>
                   </div>
                   <div className="flex gap-3">
-                    <a href={project.github} className="p-2 bg-gray-800 hover:bg-gray-700 text-gray-300 rounded-lg transition-colors" aria-label="GitHub Repository">
+                    <a href={project.github} className="p-2 bg-gray-800 hover:bg-gray-700 text-gray-300 rounded-lg transition-colors" aria-label={t('project_view_code')}>
                       <Github className="h-5 w-5" />
                     </a>
-                    <a href={project.demo} className="p-2 bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-400 rounded-lg transition-colors" aria-label="Live Demo">
+                    <a href={project.demo} className="p-2 bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-400 rounded-lg transition-colors" aria-label={t('project_live_demo')}>
                       <ExternalLink className="h-5 w-5" />
                     </a>
                   </div>
@@ -73,15 +76,15 @@ export default function Projects() {
 
                 <div className="grid md:grid-cols-2 gap-8">
                   <div>
-                    <h4 className="text-sm font-semibold text-gray-300 uppercase tracking-wider mb-2">The Problem</h4>
+                    <h4 className="text-sm font-semibold text-gray-300 uppercase tracking-wider mb-2">{t('project_problem_label')}</h4>
                     <p className="text-gray-400 text-sm leading-relaxed mb-6">{project.problem}</p>
                     
-                    <h4 className="text-sm font-semibold text-gray-300 uppercase tracking-wider mb-2">The Solution</h4>
+                    <h4 className="text-sm font-semibold text-gray-300 uppercase tracking-wider mb-2">{t('project_solution_label')}</h4>
                     <p className="text-gray-400 text-sm leading-relaxed">{project.solution}</p>
                   </div>
                   
                   <div className="bg-gray-800/50 rounded-xl p-6 border border-gray-700/50">
-                    <h4 className="text-sm font-semibold text-white uppercase tracking-wider mb-4">Measurable Impact</h4>
+                    <h4 className="text-sm font-semibold text-white uppercase tracking-wider mb-4">{t('project_impact_label')}</h4>
                     <ul className="space-y-3">
                       {project.metrics.map((metric, i) => (
                         <li key={i} className="flex items-start text-sm text-gray-300">
