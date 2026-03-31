@@ -1,0 +1,4 @@
+Upload your Prasann_Parab_Resume.pdf file into this folder. 
+
+Any file placed in this "public" folder will be served directly at the root URL of your website. 
+For example, placing "Prasann_Parab_Resume.pdf" here makes it available at "yourwebsite.com/Prasann_Parab_Resume.pdf", which is exactly where the download buttons are looking for it!
